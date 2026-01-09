@@ -1,10 +1,10 @@
 import { Low } from 'lowdb';
-import { JSONFile } from 'lowdb/node';
+import { JSONFileSync } from 'lowdb/node';
 import { v4 as uuidv4 } from 'uuid';
 import { json } from '@sveltejs/kit';
 
 // Database adapter for server-side file operations
-const adapter = new JSONFile('data/db.json');
+const adapter = new JSONFileSync('data/db.json');
 const db = new Low(adapter, {});
 
 // Initialize database with default data

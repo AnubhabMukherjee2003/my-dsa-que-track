@@ -36,17 +36,21 @@
 </script>
 
 {#if $showQuestionModal}
-	<div class="modal-overlay" onclick={closeModal}>
-		<div class="modal" onclick={(e) => e.stopPropagation()}>
-			<h3>{$editingItem ? 'Edit Question' : 'Add Question'}</h3>
+	<div class="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onclick={closeModal}>
+		<div class="bg-[#1a1a1a] border-subtle rounded-lg p-8 max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto" onclick={(e) => e.stopPropagation()}>
+			<h3 class="text-2xl font-semibold text-white mb-6">
+				{$editingItem ? 'Edit Question' : 'Add Question'}
+			</h3>
 			
 			<form onsubmit={handleSubmit}>
-				<div class="form-group">
-					<label for="question-name">Question Name *</label>
+				<div class="mb-6">
+					<label for="question-name" class="block text-muted font-medium mb-2">
+						Question Name *
+					</label>
 					<input 
 						id="question-name"
 						type="text" 
-						class="form-control" 
+						class="input-field w-full" 
 						bind:value={name}
 						placeholder="Enter question name..."
 						required
@@ -54,33 +58,37 @@
 					/>
 				</div>
 
-				<div class="form-group">
-					<label for="question-url">Problem URL</label>
+				<div class="mb-6">
+					<label for="question-url" class="block text-muted font-medium mb-2">
+						Problem URL
+					</label>
 					<input 
 						id="question-url"
 						type="url" 
-						class="form-control" 
+						class="input-field w-full" 
 						bind:value={url}
 						placeholder="https://leetcode.com/problems/..."
 					/>
 				</div>
 
-				<div class="form-group">
-					<label for="question-solution">Solution Notes</label>
+				<div class="mb-6">
+					<label for="question-solution" class="block text-muted font-medium mb-2">
+						Solution Notes
+					</label>
 					<textarea 
 						id="question-solution"
-						class="form-control" 
+						class="input-field w-full resize-y min-h-[100px]" 
 						bind:value={solution}
 						placeholder="Add your solution approach, time/space complexity, notes..."
 						rows="4"
 					></textarea>
 				</div>
 				
-				<div class="modal-actions">
-					<button type="button" class="btn btn-secondary" onclick={closeModal}>
+				<div class="flex justify-end gap-3">
+					<button type="button" class="btn-secondary" onclick={closeModal}>
 						Cancel
 					</button>
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" class="btn-primary">
 						{$editingItem ? 'Update' : 'Create'}
 					</button>
 				</div>
@@ -88,31 +96,3 @@
 		</div>
 	</div>
 {/if}
-
-<style>
-	.form-group {
-		margin-bottom: 20px;
-	}
-
-	.form-group label {
-		display: block;
-		margin-bottom: 8px;
-		font-weight: 500;
-	}
-
-	.form-control[rows] {
-		resize: vertical;
-		min-height: 80px;
-	}
-
-	.modal-actions {
-		display: flex;
-		justify-content: flex-end;
-		gap: 12px;
-		margin-top: 24px;
-	}
-
-	.modal h3 {
-		margin: 0 0 20px 0;
-	}
-</style>

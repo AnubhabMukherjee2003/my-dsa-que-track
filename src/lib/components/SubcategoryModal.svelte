@@ -26,17 +26,21 @@
 </script>
 
 {#if $showSubcategoryModal}
-	<div class="modal-overlay" onclick={closeModal}>
-		<div class="modal" onclick={(e) => e.stopPropagation()}>
-			<h3>{$editingItem ? 'Edit Subcategory' : 'Add Subcategory'}</h3>
+	<div class="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onclick={closeModal}>
+		<div class="bg-[#1a1a1a] border-subtle rounded-lg p-8 max-w-md w-full mx-4" onclick={(e) => e.stopPropagation()}>
+			<h3 class="text-2xl font-semibold text-white mb-6">
+				{$editingItem ? 'Edit Subcategory' : 'Add Subcategory'}
+			</h3>
 			
 			<form onsubmit={handleSubmit}>
-				<div class="form-group">
-					<label for="subcategory-name">Subcategory Name</label>
+				<div class="mb-6">
+					<label for="subcategory-name" class="block text-muted font-medium mb-2">
+						Subcategory Name
+					</label>
 					<input 
 						id="subcategory-name"
 						type="text" 
-						class="form-control" 
+						class="input-field w-full" 
 						bind:value={name}
 						placeholder="Enter subcategory name..."
 						required
@@ -44,11 +48,11 @@
 					/>
 				</div>
 				
-				<div class="modal-actions">
-					<button type="button" class="btn btn-secondary" onclick={closeModal}>
+				<div class="flex justify-end gap-3">
+					<button type="button" class="btn-secondary" onclick={closeModal}>
 						Cancel
 					</button>
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" class="btn-primary">
 						{$editingItem ? 'Update' : 'Create'}
 					</button>
 				</div>
@@ -56,26 +60,3 @@
 		</div>
 	</div>
 {/if}
-
-<style>
-	.form-group {
-		margin-bottom: 20px;
-	}
-
-	.form-group label {
-		display: block;
-		margin-bottom: 8px;
-		font-weight: 500;
-	}
-
-	.modal-actions {
-		display: flex;
-		justify-content: flex-end;
-		gap: 12px;
-		margin-top: 24px;
-	}
-
-	.modal h3 {
-		margin: 0 0 20px 0;
-	}
-</style>
