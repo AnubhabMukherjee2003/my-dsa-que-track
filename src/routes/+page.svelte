@@ -1,27 +1,28 @@
 <script>
-	import { onMount } from 'svelte';
-	import { Database } from '$lib/database.js';
-	import { 
-		categories, 
-		subcategories, 
-		questions, 
+	import { onMount } from "svelte";
+	import { Database } from "$lib/database.js";
+	import {
+		categories,
+		subcategories,
+		questions,
 		stats,
 		selectedCategory,
 		selectedSubcategory,
-		searchQuery,
 		showCompleted,
 		showPending,
 		showCategoryModal,
 		showSubcategoryModal,
 		showQuestionModal,
-		editingItem
-	} from '$lib/stores.js';
-	import CategoryModal from '$lib/components/CategoryModal.svelte';
-	import SubcategoryModal from '$lib/components/SubcategoryModal.svelte';
-	import QuestionModal from '$lib/components/QuestionModal.svelte';
+		editingItem,
+	} from "$lib/stores.js";
+	import CategoryModal from "$lib/components/CategoryModal.svelte";
+	import SubcategoryModal from "$lib/components/SubcategoryModal.svelte";
+	import QuestionModal from "$lib/components/QuestionModal.svelte";
+	import Header from "$lib/components/Header.svelte";
+	import Welcome from "$lib/components/Welcome.svelte";
 
 	let filteredQuestions = $state([]);
-	let searchInput = $state('');
+	let searchInput = $state("");
 
 	// Load data on mount
 	onMount(async () => {
@@ -94,7 +95,9 @@
 	}
 
 	async function deleteCategory(id) {
-		if (confirm('Delete this category and all its subcategories/questions?')) {
+		if (
+			confirm("Delete this category and all its subcategories/questions?")
+		) {
 			await Database.deleteCategory(id);
 			await loadCategories();
 			await loadStats();
@@ -110,17 +113,17 @@
 		if (editing) {
 			await Database.updateSubcategory(editing.id, { name });
 		} else {
-			await Database.createSubcategory($selectedCategory.id, name);
+			await Database.createSubcategory($selectedCategory?.id, name);
 		}
-		await loadSubcategories($selectedCategory.id);
+		await loadSubcategories($selectedCategory?.id);
 		showSubcategoryModal.set(false);
 		editingItem.set(null);
 	}
 
 	async function deleteSubcategory(id) {
-		if (confirm('Delete this subcategory and all its questions?')) {
+		if (confirm("Delete this subcategory and all its questions?")) {
 			await Database.deleteSubcategory(id);
-			await loadSubcategories($selectedCategory.id);
+			await loadSubcategories($selectedCategory?.id);
 			await loadStats();
 			selectedSubcategory.set(null);
 			questions.set([]);
@@ -132,25 +135,32 @@
 		if (editing) {
 			await Database.updateQuestion(editing.id, data);
 		} else {
-			await Database.createQuestion($selectedSubcategory.id, data.name, data.url, data.solution);
+			await Database.createQuestion(
+				$selectedSubcategory?.id,
+				data.name,
+				data.url,
+				data.solution,
+			);
 		}
-		await loadQuestions($selectedSubcategory.id);
+		await loadQuestions($selectedSubcategory?.id);
 		await loadStats();
 		showQuestionModal.set(false);
 		editingItem.set(null);
 	}
 
 	async function deleteQuestion(id) {
-		if (confirm('Delete this question?')) {
+		if (confirm("Delete this question?")) {
 			await Database.deleteQuestion(id);
-			await loadQuestions($selectedSubcategory.id);
+			await loadQuestions($selectedSubcategory?.id);
 			await loadStats();
 		}
 	}
 
 	async function toggleQuestionDone(question) {
-		await Database.updateQuestion(question.id, { isDone: !question.isDone });
-		await loadQuestions($selectedSubcategory.id);
+		await Database.updateQuestion(question.id, {
+			isDone: !question.isDone,
+		});
+		await loadQuestions($selectedSubcategory?.id);
 		await loadStats();
 	}
 
@@ -161,17 +171,19 @@
 		const search = searchInput;
 		const showComp = $showCompleted;
 		const showPend = $showPending;
-		
+
 		if (questionsToFilter.length > 0) {
-			filteredQuestions = questionsToFilter.filter(q => {
-				const matchesSearch = !search || 
+			filteredQuestions = questionsToFilter.filter((q) => {
+				const matchesSearch =
+					!search ||
 					q.name.toLowerCase().includes(search.toLowerCase()) ||
 					q.solution.toLowerCase().includes(search.toLowerCase());
-				
-				const matchesFilter = 
-					(!showComp && !showPend) ? true : // Show all when both are unchecked
-					((showComp && q.isDone) || (showPend && !q.isDone));
-				
+
+				const matchesFilter =
+					!showComp && !showPend
+						? true // Show all when both are unchecked
+						: (showComp && q.isDone) || (showPend && !q.isDone);
+
 				return matchesSearch && matchesFilter;
 			});
 		} else {
@@ -182,49 +194,86 @@
 
 <div class="min-h-screen flex flex-col w-full p-[clamp(0.5rem,3vw,2rem)]">
 	<!-- Header -->
-	<header class="flex-none border-subtle rounded-t-lg p-8 text-center" style="flex-basis: 20%">
-		<h1 class="text-4xl font-bold text-white mb-2">
-			DSA Tracker
-		</h1>
-		<p class="text-muted text-lg">Track your Data Structures & Algorithms practice progress</p>
-	</header>
+	<Header />
 
 	<!-- Main Content -->
-	<main class="flex-1 border-subtle border-t-0 rounded-b-lg" style="flex-basis: 70%">
+	<main
+		class="flex-1 border-subtle border-t-0 rounded-b-lg"
+		style="flex-basis: 70%"
+	>
 		<div class="p-4 h-full flex flex-col lg:flex-row gap-6">
-			
 			<!-- Categories Sidebar -->
-			<aside class="w-full lg:w-80 border-subtle rounded-lg p-6 h-fit lg:sticky lg:top-6">
-				<div class="flex justify-between items-center mb-6 pb-4 border-b border-[#444]">
+			<aside
+				class="w-full lg:w-80 border-subtle rounded-lg p-6 h-fit lg:sticky lg:top-6"
+			>
+				<div
+					class="flex justify-between items-center mb-6 pb-4 border-b border-[#444]"
+				>
 					<h3 class="text-xl font-semibold text-white">Categories</h3>
-					<button class="btn-primary text-sm" onclick={() => openCategoryModal()}>
+					<button
+						class="btn-primary text-sm"
+						onclick={() => openCategoryModal()}
+					>
 						+ Add
 					</button>
 				</div>
-				
+
 				<div class="space-y-2">
 					{#each $categories as category}
-						<div class="card-minimal group {$selectedCategory?.id === category.id ? 'card-active' : ''}" 
-							 onclick={() => selectCategory(category)}>
+						<div
+							class="card-minimal group {$selectedCategory?.id ===
+							category.id
+								? 'card-active'
+								: ''} cursor-pointer"
+							onclick={() => selectCategory(category)}
+							role="button"
+							tabindex="0"
+							onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCategory(category); } }}
+						>
 							<div class="flex items-center justify-between">
 								<div class="flex-1">
-									<span class="text-white font-medium block mb-2">{category.name}</span>
+									<span
+										class="text-white font-medium block mb-2"
+										>{category.name}</span
+									>
 									{#if $stats[category.id]}
-										<div class="text-xs text-muted mb-2 font-mono">
-											{$stats[category.id].done}/{$stats[category.id].total} 
+										<div
+											class="text-xs text-muted mb-2 font-mono"
+										>
+											{$stats[category.id].done}/{$stats[
+												category.id
+											].total}
 											({$stats[category.id].percentage}%)
 										</div>
-										<div class="w-full bg-[#333] rounded-full h-1">
-											<div class="bg-white h-1 rounded-full transition-all duration-300" 
-												 style="width: {$stats[category.id].percentage}%"></div>
+										<div
+											class="w-full bg-[#333] rounded-full h-1"
+										>
+											<div
+												class="bg-white h-1 rounded-full transition-all duration-300"
+												style="width: {$stats[
+													category.id
+												].percentage}%"
+											></div>
 										</div>
 									{/if}
 								</div>
-								<div class="flex gap-2 ml-4 opacity-0 group-hover:opacity-100 transition-opacity">
-									<button class="text-muted hover:text-white p-1 rounded text-sm" 
-											onclick={(e) => { e.stopPropagation(); openCategoryModal(category); }}>✏️</button>
-									<button class="text-muted hover:text-red-400 p-1 rounded text-sm" 
-											onclick={(e) => { e.stopPropagation(); deleteCategory(category.id); }}>🗑️</button>
+								<div
+									class="flex gap-2 ml-4 opacity-0 group-hover:opacity-100 transition-opacity"
+								>
+									<button
+										class="text-muted hover:text-white p-1 rounded text-sm"
+										onclick={(e) => {
+											e.stopPropagation();
+											openCategoryModal(category);
+										}}>✏️</button
+									>
+									<button
+										class="text-muted hover:text-red-400 p-1 rounded text-sm"
+										onclick={(e) => {
+											e.stopPropagation();
+											deleteCategory(category.id);
+										}}>🗑️</button
+									>
 								</div>
 							</div>
 						</div>
@@ -237,27 +286,67 @@
 				{#if $selectedCategory}
 					<!-- Subcategories -->
 					<div class="mb-8">
-						<div class="flex justify-between items-center mb-6 pb-4 border-b border-[#444]">
+						<div
+							class="flex justify-between items-center mb-6 pb-4 border-b border-[#444]"
+						>
 							<h3 class="text-2xl font-semibold text-white">
 								Subcategories - {$selectedCategory.name}
 							</h3>
-							<button class="btn-primary" onclick={() => openSubcategoryModal()}>
+							<button
+								class="btn-primary"
+								onclick={() => openSubcategoryModal()}
+							>
 								+ Add Subcategory
 							</button>
 						</div>
-						
-						<div class="grid gap-2 md:grid-cols-[minmax(80px,10vw)_1fr] md:gap-6">
+
+						<div
+							class="grid gap-2 md:grid-cols-[minmax(80px,10vw)_1fr] md:gap-6"
+						>
 							{#each $subcategories as subcategory}
-								<div class="py-2 md:py-4 border-b border-transparent md:col-span-2 group">
-									<div class="card-minimal {$selectedSubcategory?.id === subcategory.id ? 'card-active' : ''}" 
-										 onclick={() => selectSubcategory(subcategory)}>
-										<div class="flex justify-between items-center">
-											<h4 class="text-white font-medium link-hover">{subcategory.name}</h4>
-											<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-												<button class="text-muted hover:text-white p-1 rounded text-sm" 
-														onclick={(e) => { e.stopPropagation(); openSubcategoryModal(subcategory); }}>✏️</button>
-												<button class="text-muted hover:text-red-400 p-1 rounded text-sm" 
-														onclick={(e) => { e.stopPropagation(); deleteSubcategory(subcategory.id); }}>🗑️</button>
+								<div
+									class="py-2 md:py-4 border-b border-transparent md:col-span-2 group"
+								>
+									<div
+										class="card-minimal {$selectedSubcategory?.id ===
+										subcategory.id
+											? 'card-active'
+											: ''} cursor-pointer"
+										onclick={() =>
+											selectSubcategory(subcategory)}
+										role="button"
+										tabindex="0"
+										onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectSubcategory(subcategory); } }}
+									>
+										<div
+											class="flex justify-between items-center"
+										>
+											<h4
+												class="text-white font-medium link-hover"
+											>
+												{subcategory.name}
+											</h4>
+											<div
+												class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+											>
+												<button
+													class="text-muted hover:text-white p-1 rounded text-sm"
+													onclick={(e) => {
+														e.stopPropagation();
+														openSubcategoryModal(
+															subcategory,
+														);
+													}}>✏️</button
+												>
+												<button
+													class="text-muted hover:text-red-400 p-1 rounded text-sm"
+													onclick={(e) => {
+														e.stopPropagation();
+														deleteSubcategory(
+															subcategory.id,
+														);
+													}}>🗑️</button
+												>
 											</div>
 										</div>
 									</div>
@@ -269,77 +358,128 @@
 					{#if $selectedSubcategory}
 						<!-- Questions -->
 						<div class="flex-1">
-							<div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 pb-4 border-b border-[#444] gap-4">
+							<div
+								class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 pb-4 border-b border-[#444] gap-4"
+							>
 								<h3 class="text-2xl font-semibold text-white">
 									Questions - {$selectedSubcategory.name}
 								</h3>
-								<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-									<div class="flex items-center gap-4 border-subtle rounded-lg px-4 py-2">
-										<input 
-											type="text" 
-											placeholder="Search questions..." 
+								<div
+									class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+								>
+									<div
+										class="flex items-center gap-4 border-subtle rounded-lg px-4 py-2"
+									>
+										<input
+											type="text"
+											placeholder="Search questions..."
 											class="input-field bg-transparent border-0 px-0 py-1 text-sm w-48"
 											bind:value={searchInput}
 										/>
-										<label class="flex items-center gap-2 text-sm text-muted cursor-pointer">
-											<input 
-												type="checkbox" 
+										<label
+											class="flex items-center gap-2 text-sm text-muted cursor-pointer"
+										>
+											<input
+												type="checkbox"
 												class="accent-white"
 												checked={$showCompleted}
-												onchange={(e) => showCompleted.set(e.target.checked)}
+												onchange={(e) =>
+													showCompleted.set(
+														e.target.checked,
+													)}
 											/>
 											Completed
 										</label>
-										<label class="flex items-center gap-2 text-sm text-muted cursor-pointer">
-											<input 
-												type="checkbox" 
+										<label
+											class="flex items-center gap-2 text-sm text-muted cursor-pointer"
+										>
+											<input
+												type="checkbox"
 												class="accent-white"
 												checked={$showPending}
-												onchange={(e) => showPending.set(e.target.checked)}
+												onchange={(e) =>
+													showPending.set(
+														e.target.checked,
+													)}
 											/>
 											Pending
 										</label>
 									</div>
-									<button class="btn-primary" onclick={() => openQuestionModal()}>
+									<button
+										class="btn-primary"
+										onclick={() => openQuestionModal()}
+									>
 										+ Add Question
 									</button>
 								</div>
 							</div>
-							
-							<div class="grid gap-2 md:grid-cols-[minmax(80px,10vw)_1fr] md:gap-6">
+
+							<div
+								class="grid gap-2 md:grid-cols-[minmax(80px,10vw)_1fr] md:gap-6"
+							>
 								{#each filteredQuestions as question}
-									<span class="text-xs md:text-sm font-semibold text-muted uppercase tracking-wider pt-3 md:pt-4 md:pl-2 md:text-right md:col-span-1 font-mono">
-										{question.isDone ? '✓' : '○'}
+									<span
+										class="text-xs md:text-sm font-semibold text-muted uppercase tracking-wider pt-3 md:pt-4 md:pl-2 md:text-right md:col-span-1 font-mono"
+									>
+										{question.isDone ? "✓" : "○"}
 									</span>
-									<div class="py-2 md:py-4 border-b border-transparent md:col-span-1 group">
+									<div
+										class="py-2 md:py-4 border-b border-transparent md:col-span-1 group"
+									>
 										<div class="flex items-start gap-4">
-											<input 
-												type="checkbox" 
+											<input
+												type="checkbox"
 												class="mt-1 accent-white w-4 h-4"
 												checked={question.isDone}
-												onchange={() => toggleQuestionDone(question)}
+												onchange={() =>
+													toggleQuestionDone(
+														question,
+													)}
 											/>
 											<div class="flex-1">
-												<h4 class="text-white font-medium mb-2 link-hover {question.isDone ? 'line-through opacity-70' : ''}">
+												<h4
+													class="text-white font-medium mb-2 link-hover {question.isDone
+														? 'line-through opacity-70'
+														: ''}"
+												>
 													{question.name}
 												</h4>
 												{#if question.url}
-													<a href={question.url} target="_blank" 
-													   class="text-muted hover:text-white text-sm inline-flex items-center gap-1 mb-2 link-hover">
+													<a
+														href={question.url}
+														target="_blank"
+														class="text-muted hover:text-white text-sm inline-flex items-center gap-1 mb-2 link-hover"
+													>
 														View Problem ↗
 													</a>
 												{/if}
 												{#if question.solution}
-													<p class="text-muted text-sm bg-[#333]/30 rounded p-3 border-l-2 border-[#444] {question.isDone ? 'opacity-50' : ''}">
+													<p
+														class="text-muted text-sm bg-[#333]/30 rounded p-3 border-l-2 border-[#444] {question.isDone
+															? 'opacity-50'
+															: ''}"
+													>
 														{question.solution}
 													</p>
 												{/if}
 											</div>
-											<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-												<button class="text-muted hover:text-white p-1 rounded text-sm" 
-														onclick={() => openQuestionModal(question)}>✏️</button>
-												<button class="text-muted hover:text-red-400 p-1 rounded text-sm" 
-														onclick={() => deleteQuestion(question.id)}>🗑️</button>
+											<div
+												class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+											>
+												<button
+													class="text-muted hover:text-white p-1 rounded text-sm"
+													onclick={() =>
+														openQuestionModal(
+															question,
+														)}>✏️</button
+												>
+												<button
+													class="text-muted hover:text-red-400 p-1 rounded text-sm"
+													onclick={() =>
+														deleteQuestion(
+															question.id,
+														)}>🗑️</button
+												>
 											</div>
 										</div>
 									</div>
@@ -348,24 +488,22 @@
 						</div>
 					{/if}
 				{:else}
-					<div class="flex-1 flex items-center justify-center text-center">
-						<div class="border-subtle rounded-lg p-12">
-							<h3 class="text-2xl font-semibold text-white mb-4">Welcome to DSA Tracker</h3>
-							<p class="text-muted text-lg mb-6">Select a category from the sidebar to get started, or create your first category.</p>
-							<button class="btn-primary" onclick={() => openCategoryModal()}>
-								Create First Category
-							</button>
-						</div>
-					</div>
+					<Welcome onCreateCategory={() => openCategoryModal()} />
 				{/if}
 			</section>
 		</div>
 	</main>
 
 	<!-- Footer -->
-	<footer class="border-subtle flex-none mt-8 py-4 text-center text-xs text-muted rounded-b-lg" style="flex-basis: 10%">
-		<p>© {new Date().getFullYear()} DSA Tracker. Built with SvelteKit & Tailwind CSS.</p>
-	</footer>
+	<!-- <footer
+		class="border-subtle flex-none mt-8 py-4 text-center text-xs text-muted rounded-b-lg"
+		style="flex-basis: 10%"
+	>
+		<p>
+			© {new Date().getFullYear()} DSA Tracker. Built with SvelteKit & Tailwind
+			CSS.
+		</p>
+	</footer> -->
 </div>
 
 <!-- Modals -->
