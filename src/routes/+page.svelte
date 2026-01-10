@@ -202,291 +202,288 @@
 		style="flex-basis: 70%"
 	>
 		<div class="p-4 h-full flex flex-col lg:flex-row gap-6">
-			<!-- Categories Sidebar -->
+			<!-- Sidebar with Categories and Subcategories -->
 			<aside
 				class="w-full lg:w-80 border-subtle rounded-lg p-6 h-fit lg:sticky lg:top-6"
 			>
-				<div
-					class="flex justify-between items-center mb-6 pb-4 border-b border-[#444]"
-				>
-					<h3 class="text-xl font-semibold text-white">Categories</h3>
-					<button
-						class="btn-primary text-sm"
-						onclick={() => openCategoryModal()}
+				<!-- Categories Section -->
+				<div class="mb-6">
+					<div
+						class="flex justify-between items-center mb-4 pb-3 border-b border-[#444]"
 					>
-						+ Add
-					</button>
-				</div>
-
-				<div class="space-y-2">
-					{#each $categories as category}
-						<div
-							class="card-minimal group {$selectedCategory?.id ===
-							category.id
-								? 'card-active'
-								: ''} cursor-pointer"
-							onclick={() => selectCategory(category)}
-							role="button"
-							tabindex="0"
-							onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCategory(category); } }}
+						<h3 class="text-lg font-semibold text-white">Categories</h3>
+						<button
+							class="btn-primary text-sm"
+							onclick={() => openCategoryModal()}
 						>
-							<div class="flex items-center justify-between">
-								<div class="flex-1">
-									<span
-										class="text-white font-medium block mb-2"
-										>{category.name}</span
-									>
-									{#if $stats[category.id]}
-										<div
-											class="text-xs text-muted mb-2 font-mono"
+							+ Add
+						</button>
+					</div>
+
+					<div class="space-y-2">
+						{#each $categories as category}
+							<div
+								class="card-minimal group {$selectedCategory?.id ===
+								category.id
+									? 'card-active'
+									: ''} cursor-pointer"
+								onclick={() => selectCategory(category)}
+								role="button"
+								tabindex="0"
+								onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCategory(category); } }}
+							>
+								<div class="flex items-center justify-between">
+									<div class="flex-1">
+										<span
+											class="text-white font-medium block mb-2"
+											>{category.name}</span
 										>
-											{$stats[category.id].done}/{$stats[
-												category.id
-											].total}
-											({$stats[category.id].percentage}%)
-										</div>
-										<div
-											class="w-full bg-[#333] rounded-full h-1"
-										>
+										{#if $stats[category.id]}
 											<div
-												class="bg-white h-1 rounded-full transition-all duration-300"
-												style="width: {$stats[
+												class="text-xs text-muted mb-2 font-mono"
+											>
+												{$stats[category.id].done}/{$stats[
 													category.id
-												].percentage}%"
-											></div>
-										</div>
-									{/if}
-								</div>
-								<div
-									class="flex gap-2 ml-4 opacity-0 group-hover:opacity-100 transition-opacity"
-								>
-									<button
-										class="text-muted hover:text-white p-1 rounded text-sm"
-										onclick={(e) => {
-											e.stopPropagation();
-											openCategoryModal(category);
-										}}>✏️</button
+												].total}
+												({$stats[category.id].percentage}%)
+											</div>
+											<div
+												class="w-full bg-[#333] rounded-full h-1"
+											>
+												<div
+													class="bg-white h-1 rounded-full transition-all duration-300"
+													style="width: {$stats[
+														category.id
+													].percentage}%"
+												></div>
+											</div>
+										{/if}
+									</div>
+									<div
+										class="flex gap-2 ml-4 opacity-0 group-hover:opacity-100 transition-opacity"
 									>
-									<button
-										class="text-muted hover:text-red-400 p-1 rounded text-sm"
-										onclick={(e) => {
-											e.stopPropagation();
-											deleteCategory(category.id);
-										}}>🗑️</button
-									>
+										<button
+											class="text-muted hover:text-white p-1 rounded text-sm"
+											onclick={(e) => {
+												e.stopPropagation();
+												openCategoryModal(category);
+											}}>✏️</button
+										>
+										<button
+											class="text-muted hover:text-red-400 p-1 rounded text-sm"
+											onclick={(e) => {
+												e.stopPropagation();
+												deleteCategory(category.id);
+											}}>🗑️</button
+										>
+									</div>
 								</div>
 							</div>
-						</div>
-					{/each}
+						{/each}
+					</div>
 				</div>
-			</aside>
 
-			<!-- Main Content Area -->
-			<section class="flex-1 flex flex-col">
+				<!-- Subcategories Section -->
 				{#if $selectedCategory}
-					<!-- Subcategories -->
-					<div class="mb-8">
+					<div>
 						<div
-							class="flex justify-between items-center mb-6 pb-4 border-b border-[#444]"
+							class="flex justify-between items-center mb-4 pb-3 border-b border-[#444]"
 						>
-							<h3 class="text-2xl font-semibold text-white">
-								Subcategories - {$selectedCategory.name}
+							<h3 class="text-lg font-semibold text-white">
+								Subcategories
 							</h3>
 							<button
-								class="btn-primary"
+								class="btn-primary text-sm"
 								onclick={() => openSubcategoryModal()}
 							>
-								+ Add Subcategory
+								+ Add
 							</button>
 						</div>
 
-						<div
-							class="grid gap-2 md:grid-cols-[minmax(80px,10vw)_1fr] md:gap-6"
-						>
+						<div class="space-y-2">
 							{#each $subcategories as subcategory}
 								<div
-									class="py-2 md:py-4 border-b border-transparent md:col-span-2 group"
+									class="card-minimal group {$selectedSubcategory?.id ===
+									subcategory.id
+										? 'card-active'
+										: ''} cursor-pointer"
+									onclick={() =>
+										selectSubcategory(subcategory)}
+									role="button"
+									tabindex="0"
+									onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectSubcategory(subcategory); } }}
 								>
 									<div
-										class="card-minimal {$selectedSubcategory?.id ===
-										subcategory.id
-											? 'card-active'
-											: ''} cursor-pointer"
-										onclick={() =>
-											selectSubcategory(subcategory)}
-										role="button"
-										tabindex="0"
-										onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectSubcategory(subcategory); } }}
+										class="flex justify-between items-center"
 									>
-										<div
-											class="flex justify-between items-center"
+										<h4
+											class="text-white font-medium link-hover"
 										>
-											<h4
-												class="text-white font-medium link-hover"
+											{subcategory.name}
+										</h4>
+										<div
+											class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+										>
+											<button
+												class="text-muted hover:text-white p-1 rounded text-sm"
+												onclick={(e) => {
+													e.stopPropagation();
+													openSubcategoryModal(
+														subcategory,
+													);
+												}}>✏️</button
 											>
-												{subcategory.name}
-											</h4>
-											<div
-												class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+											<button
+												class="text-muted hover:text-red-400 p-1 rounded text-sm"
+												onclick={(e) => {
+													e.stopPropagation();
+													deleteSubcategory(
+														subcategory.id,
+													);
+												}}>🗑️</button
 											>
-												<button
-													class="text-muted hover:text-white p-1 rounded text-sm"
-													onclick={(e) => {
-														e.stopPropagation();
-														openSubcategoryModal(
-															subcategory,
-														);
-													}}>✏️</button
-												>
-												<button
-													class="text-muted hover:text-red-400 p-1 rounded text-sm"
-													onclick={(e) => {
-														e.stopPropagation();
-														deleteSubcategory(
-															subcategory.id,
-														);
-													}}>🗑️</button
-												>
-											</div>
 										</div>
 									</div>
 								</div>
 							{/each}
 						</div>
 					</div>
+				{/if}
+			</aside>
 
-					{#if $selectedSubcategory}
-						<!-- Questions -->
-						<div class="flex-1">
+			<!-- Main Content Area -->
+			<section class="flex-1 flex flex-col">
+				{#if $selectedSubcategory}
+					<!-- Questions -->
+					<div class="flex-1">
+						<div
+							class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 pb-4 border-b border-[#444] gap-4"
+						>
+							<h3 class="text-2xl font-semibold text-white">
+								Questions - {$selectedSubcategory.name}
+							</h3>
 							<div
-								class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 pb-4 border-b border-[#444] gap-4"
+								class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
 							>
-								<h3 class="text-2xl font-semibold text-white">
-									Questions - {$selectedSubcategory.name}
-								</h3>
 								<div
-									class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+									class="flex items-center gap-4 border-subtle rounded-lg px-4 py-2"
 								>
-									<div
-										class="flex items-center gap-4 border-subtle rounded-lg px-4 py-2"
+									<input
+										type="text"
+										placeholder="Search questions..."
+										class="input-field bg-transparent border-0 px-0 py-1 text-sm w-48"
+										bind:value={searchInput}
+									/>
+									<label
+										class="flex items-center gap-2 text-sm text-muted cursor-pointer"
 									>
 										<input
-											type="text"
-											placeholder="Search questions..."
-											class="input-field bg-transparent border-0 px-0 py-1 text-sm w-48"
-											bind:value={searchInput}
+											type="checkbox"
+											class="accent-white"
+											checked={$showCompleted}
+											onchange={(e) =>
+												showCompleted.set(
+													e.target.checked,
+												)}
 										/>
-										<label
-											class="flex items-center gap-2 text-sm text-muted cursor-pointer"
-										>
-											<input
-												type="checkbox"
-												class="accent-white"
-												checked={$showCompleted}
-												onchange={(e) =>
-													showCompleted.set(
-														e.target.checked,
-													)}
-											/>
-											Completed
-										</label>
-										<label
-											class="flex items-center gap-2 text-sm text-muted cursor-pointer"
-										>
-											<input
-												type="checkbox"
-												class="accent-white"
-												checked={$showPending}
-												onchange={(e) =>
-													showPending.set(
-														e.target.checked,
-													)}
-											/>
-											Pending
-										</label>
-									</div>
-									<button
-										class="btn-primary"
-										onclick={() => openQuestionModal()}
+										Completed
+									</label>
+									<label
+										class="flex items-center gap-2 text-sm text-muted cursor-pointer"
 									>
-										+ Add Question
-									</button>
+										<input
+											type="checkbox"
+											class="accent-white"
+											checked={$showPending}
+											onchange={(e) =>
+												showPending.set(
+													e.target.checked,
+												)}
+										/>
+										Pending
+									</label>
 								</div>
-							</div>
-
-							<div
-								class="grid gap-2 md:grid-cols-[minmax(80px,10vw)_1fr] md:gap-6"
-							>
-								{#each filteredQuestions as question}
-									<span
-										class="text-xs md:text-sm font-semibold text-muted uppercase tracking-wider pt-3 md:pt-4 md:pl-2 md:text-right md:col-span-1 font-mono"
-									>
-										{question.isDone ? "✓" : "○"}
-									</span>
-									<div
-										class="py-2 md:py-4 border-b border-transparent md:col-span-1 group"
-									>
-										<div class="flex items-start gap-4">
-											<input
-												type="checkbox"
-												class="mt-1 accent-white w-4 h-4"
-												checked={question.isDone}
-												onchange={() =>
-													toggleQuestionDone(
-														question,
-													)}
-											/>
-											<div class="flex-1">
-												<h4
-													class="text-white font-medium mb-2 link-hover {question.isDone
-														? 'line-through opacity-70'
-														: ''}"
-												>
-													{question.name}
-												</h4>
-												{#if question.url}
-													<a
-														href={question.url}
-														target="_blank"
-														class="text-muted hover:text-white text-sm inline-flex items-center gap-1 mb-2 link-hover"
-													>
-														View Problem ↗
-													</a>
-												{/if}
-												{#if question.solution}
-													<p
-														class="text-muted text-sm bg-[#333]/30 rounded p-3 border-l-2 border-[#444] {question.isDone
-															? 'opacity-50'
-															: ''}"
-													>
-														{question.solution}
-													</p>
-												{/if}
-											</div>
-											<div
-												class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
-											>
-												<button
-													class="text-muted hover:text-white p-1 rounded text-sm"
-													onclick={() =>
-														openQuestionModal(
-															question,
-														)}>✏️</button
-												>
-												<button
-													class="text-muted hover:text-red-400 p-1 rounded text-sm"
-													onclick={() =>
-														deleteQuestion(
-															question.id,
-														)}>🗑️</button
-												>
-											</div>
-										</div>
-									</div>
-								{/each}
+								<button
+									class="btn-primary"
+									onclick={() => openQuestionModal()}
+								>
+									+ Add Question
+								</button>
 							</div>
 						</div>
-					{/if}
+
+						<div
+							class="grid gap-2 md:grid-cols-[minmax(80px,10vw)_1fr] md:gap-6"
+						>
+							{#each filteredQuestions as question}
+								<span
+									class="text-xs md:text-sm font-semibold text-muted uppercase tracking-wider pt-3 md:pt-4 md:pl-2 md:text-right md:col-span-1 font-mono"
+								>
+									{question.isDone ? "✓" : "○"}
+								</span>
+								<div
+									class="py-2 md:py-4 border-b border-transparent md:col-span-1 group"
+								>
+									<div class="flex items-start gap-4">
+										<input
+											type="checkbox"
+											class="mt-1 accent-white w-4 h-4"
+											checked={question.isDone}
+											onchange={() =>
+												toggleQuestionDone(
+													question,
+												)}
+										/>
+										<div class="flex-1">
+											<h4
+												class="text-white font-medium mb-2 link-hover {question.isDone
+													? 'line-through opacity-70'
+													: ''}"
+											>
+												{question.name}
+											</h4>
+											{#if question.url}
+												<a
+													href={question.url}
+													target="_blank"
+													class="text-muted hover:text-white text-sm inline-flex items-center gap-1 mb-2 link-hover"
+												>
+													View Problem ↗
+												</a>
+											{/if}
+											{#if question.solution}
+												<p
+													class="text-muted text-sm bg-[#333]/30 rounded p-3 border-l-2 border-[#444] {question.isDone
+														? 'opacity-50'
+														: ''}"
+												>
+													{question.solution}
+												</p>
+											{/if}
+										</div>
+										<div
+											class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+										>
+											<button
+												class="text-muted hover:text-white p-1 rounded text-sm"
+												onclick={() =>
+													openQuestionModal(
+														question,
+													)}>✏️</button
+											>
+											<button
+												class="text-muted hover:text-red-400 p-1 rounded text-sm"
+												onclick={() =>
+													deleteQuestion(
+														question.id,
+													)}>🗑️</button
+											>
+										</div>
+									</div>
+								</div>
+							{/each}
+						</div>
+					</div>
 				{:else}
 					<Welcome onCreateCategory={() => openCategoryModal()} />
 				{/if}

@@ -1,11 +1,5 @@
-<header class="flex-none border-subtle rounded-t-lg p-8 text-center">
+<header class="flex-none border-subtle rounded-t-lg p-4 text-center">
 	<div class="max-w-4xl mx-auto">
-		<pre class="font-mono text-xs leading-tight text-white whitespace-pre overflow-x-auto mx-auto inline-block">{` ██████╗ ██╗   ██╗███████╗███████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
-██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
-██║   ██║██║   ██║█████╗  ███████╗   ██║   ██║██║   ██║██╔██╗ ██║███████╗
-██║▄▄ ██║██║   ██║██╔══╝  ╚════██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║
-╚██████╔╝╚██████╔╝███████╗███████║   ██║   ██║╚██████╔╝██║ ╚████║███████║
- ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝`}</pre>
-		
+		<h1 class="text-2xl font-bold text-white">DSA Questions Tracker</h1>
 	</div>
 </header>

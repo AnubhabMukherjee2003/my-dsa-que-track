@@ -47,6 +47,12 @@
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
       "name": "strings",
       "order": 4
+    },
+    {
+      "id": "d01571b6-8208-42c4-a041-11dbcb3f4961",
+      "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
+      "name": "2 Pointer",
+      "order": 5
     }
   ],
   "questions": [
@@ -184,6 +190,42 @@
       "solution": "",
       "isDone": false,
       "order": 1
+    },
+    {
+      "id": "f4e4d2f0-5839-465d-9cbe-d0ccf6b3972d",
+      "subcategoryId": "d01571b6-8208-42c4-a041-11dbcb3f4961",
+      "name": "Squares of a Sorted Array",
+      "url": "https://leetcode.com/problems/squares-of-a-sorted-array/",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "c79a706b-2c75-44fc-88ea-0bf575686597",
+      "subcategoryId": "d01571b6-8208-42c4-a041-11dbcb3f4961",
+      "name": "3Sum",
+      "url": "https://leetcode.com/problems/3sum/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "f6e4922a-306f-428c-bc2c-e9512ef9a88b",
+      "subcategoryId": "d01571b6-8208-42c4-a041-11dbcb3f4961",
+      "name": "Container With Most Water",
+      "url": "https://leetcode.com/problems/container-with-most-water/",
+      "solution": "https://youtu.be/UuiTKBwPgAo?si=IO67vuIrSsk8fBBh",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "93e34557-7dc7-4822-941d-7b3cb0da4bd4",
+      "subcategoryId": "d01571b6-8208-42c4-a041-11dbcb3f4961",
+      "name": "Trapping Rain Water",
+      "url": "https://leetcode.com/problems/trapping-rain-water/",
+      "solution": "https://youtu.be/ZI2z5pq0TqA?si=FcgDcHfWKHWdI7bq",
+      "isDone": false,
+      "order": 3
     }
   ]
 }
