@@ -7,7 +7,7 @@
     },
     {
       "id": "12db85f7-3719-4d10-aec9-8f106a5a8809",
-      "name": "Array",
+      "name": "Array & Strings",
       "order": 1
     }
   ],
@@ -41,6 +41,12 @@
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
       "name": "Matrix",
       "order": 3
+    },
+    {
+      "id": "0a5d7c64-c55f-4ee7-93d9-3455e59f40a1",
+      "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
+      "name": "strings",
+      "order": 4
     }
   ],
   "questions": [
@@ -160,6 +166,24 @@
       "solution": "",
       "isDone": false,
       "order": 6
+    },
+    {
+      "id": "e14bb0aa-46fc-47d4-8240-f0442e1394d6",
+      "subcategoryId": "0a5d7c64-c55f-4ee7-93d9-3455e59f40a1",
+      "name": "Merge Strings Alternately",
+      "url": "https://leetcode.com/problems/merge-strings-alternately/",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "93757156-9949-48bc-af50-f637f7b7db0e",
+      "subcategoryId": "0a5d7c64-c55f-4ee7-93d9-3455e59f40a1",
+      "name": "Reverse Words in a String",
+      "url": "https://leetcode.com/problems/reverse-words-in-a-string",
+      "solution": "",
+      "isDone": false,
+      "order": 1
     }
   ]
 }
