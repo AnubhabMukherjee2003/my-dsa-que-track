@@ -4,6 +4,11 @@
       "id": "f90de746-9e2c-416b-8dc7-0f48065c55fa",
       "name": "Bit Maupulation",
       "order": 0
+    },
+    {
+      "id": "12db85f7-3719-4d10-aec9-8f106a5a8809",
+      "name": "Array",
+      "order": 1
     }
   ],
   "subcategories": [
@@ -12,6 +17,30 @@
       "categoryId": "f90de746-9e2c-416b-8dc7-0f48065c55fa",
       "name": "bit-manupulation",
       "order": 0
+    },
+    {
+      "id": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
+      "name": "array",
+      "order": 0
+    },
+    {
+      "id": "c3128383-5e0b-4435-991a-d8ef61589461",
+      "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
+      "name": "Prefix Sum",
+      "order": 1
+    },
+    {
+      "id": "ef3d2b54-dd9b-4242-a6ee-386d9688d724",
+      "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
+      "name": "Kadane's Algorithm",
+      "order": 2
+    },
+    {
+      "id": "803e4ce0-e824-4559-8586-1e56f0d61a14",
+      "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
+      "name": "Matrix",
+      "order": 3
     }
   ],
   "questions": [
@@ -20,6 +49,78 @@
       "subcategoryId": "e18793f1-e58b-409a-8b37-fa8474051a96",
       "name": "Single Number III",
       "url": "https://leetcode.com/problems/single-number-iii",
+      "solution": "https://youtu.be/faoVORjd-T8?si=p3TC4rCORqnEafd3",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "9dcc2500-20c5-481c-b108-1a366efa67e3",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Majority Element",
+      "url": "https://leetcode.com/problems/majority-element",
+      "solution": "https://youtu.be/7pnhv842keE?si=Ko6EQ02qxiqeeYny",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "79737d0f-cebf-4196-92d2-6ee15d5fedf0",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Best Time to Buy and Sell Stock II",
+      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii",
+      "solution": "https://youtu.be/3SJ3pUkPQMc?si=LYn2B73T92uVAwQ6",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "ae7d3814-9cdb-4454-b459-e6b8ce286578",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "First Missing Positive",
+      "url": "https://leetcode.com/problems/first-missing-positive",
+      "solution": "https://youtu.be/8g78yfzMlao?si=JIo9kJhogsLiXCL4",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "06c397a7-0119-41aa-9519-c6ff953df830",
+      "subcategoryId": "c3128383-5e0b-4435-991a-d8ef61589461",
+      "name": "Subarray Sum Equals K",
+      "url": "https://leetcode.com/problems/subarray-sum-equals-k/",
+      "solution": "https://youtu.be/fFVZt-6sgyo?si=YH2WWdMjeeo4PyXK",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "d89e76b5-62c1-4ba7-bbd6-4077cdd1b66f",
+      "subcategoryId": "c3128383-5e0b-4435-991a-d8ef61589461",
+      "name": "Contiguous Array",
+      "url": "https://leetcode.com/problems/contiguous-array",
+      "solution": "https://youtu.be/agB1LyObUNE?si=cVMEG8_kB6fUpkLL",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "29bf4d21-fa78-4633-84d6-7c351cbf4c16",
+      "subcategoryId": "ef3d2b54-dd9b-4242-a6ee-386d9688d724",
+      "name": "Maximum Subarray",
+      "url": "https://leetcode.com/problems/maximum-subarray",
+      "solution": "https://www.youtube.com/watch?v=AHZpyENo7k4&t=229s",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "01bb3371-1019-42c6-aa72-8ba04379c3fc",
+      "subcategoryId": "ef3d2b54-dd9b-4242-a6ee-386d9688d724",
+      "name": "Maximum Product Subarray",
+      "url": "https://leetcode.com/problems/maximum-product-subarray/",
+      "solution": "https://youtu.be/hnswaLJvr6g?si=z5i5aFNInS9gRe_b",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "77822d76-13ba-4649-bdcc-c4e3fd9aaa8f",
+      "subcategoryId": "803e4ce0-e824-4559-8586-1e56f0d61a14",
+      "name": "Set Matrix Zeroes",
+      "url": "https://leetcode.com/problems/set-matrix-zeroes/",
       "solution": "",
       "isDone": false,
       "order": 0
