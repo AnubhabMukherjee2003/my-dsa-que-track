@@ -124,6 +124,42 @@
       "solution": "",
       "isDone": false,
       "order": 0
+    },
+    {
+      "id": "f84ab1ad-f33b-409f-b6d6-5cc6dc938b62",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Roman to Integer",
+      "url": "https://leetcode.com/problems/roman-to-integer/",
+      "solution": "",
+      "isDone": false,
+      "order": 3
+    },
+    {
+      "id": "0c55d246-9e37-433a-9243-860a3187c8a8",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Best Time to Buy and Sell Stock",
+      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+      "solution": "",
+      "isDone": false,
+      "order": 4
+    },
+    {
+      "id": "d6c1e47f-ee26-495e-86bb-5b1488d8404e",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Summary Ranges",
+      "url": "https://leetcode.com/problems/summary-ranges/",
+      "solution": "",
+      "isDone": false,
+      "order": 5
+    },
+    {
+      "id": "ac8c381f-6ac7-4334-bdec-78e8bdae17b1",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Merge Intervals",
+      "url": "https://leetcode.com/problems/merge-intervals/",
+      "solution": "",
+      "isDone": false,
+      "order": 6
     }
   ]
 }
