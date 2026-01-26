@@ -9,6 +9,21 @@
       "id": "12db85f7-3719-4d10-aec9-8f106a5a8809",
       "name": "Array & Strings",
       "order": 1
+    },
+    {
+      "id": "8359f71d-25a2-4ce1-86a6-e24fb74fd88d",
+      "name": "Linked List",
+      "order": 2
+    },
+    {
+      "id": "0b8c8674-06f9-4201-80eb-852351f62c00",
+      "name": "Stack",
+      "order": 3
+    },
+    {
+      "id": "e3c26b1c-0098-4088-9b57-d0d20aae03a1",
+      "name": "Queue",
+      "order": 4
     }
   ],
   "subcategories": [
@@ -53,6 +68,48 @@
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
       "name": "2 Pointer",
       "order": 5
+    },
+    {
+      "id": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
+      "categoryId": "8359f71d-25a2-4ce1-86a6-e24fb74fd88d",
+      "name": "linked-list",
+      "order": 0
+    },
+    {
+      "id": "a2bec02c-a8d6-4880-9f87-f578374bdc29",
+      "categoryId": "8359f71d-25a2-4ce1-86a6-e24fb74fd88d",
+      "name": "in-place reversal",
+      "order": 1
+    },
+    {
+      "id": "08c34329-d61a-4f1c-80d8-984c72822678",
+      "categoryId": "8359f71d-25a2-4ce1-86a6-e24fb74fd88d",
+      "name": "fast and slow pointers",
+      "order": 2
+    },
+    {
+      "id": "f289a51a-dc72-468f-8e45-4d404656b4a1",
+      "categoryId": "0b8c8674-06f9-4201-80eb-852351f62c00",
+      "name": "stack",
+      "order": 0
+    },
+    {
+      "id": "0dd66ba3-035b-46f3-b06d-f7bf0982a64f",
+      "categoryId": "0b8c8674-06f9-4201-80eb-852351f62c00",
+      "name": "monotonic stack",
+      "order": 1
+    },
+    {
+      "id": "54b57ca2-2dfc-47fc-9385-ec0e26f3e973",
+      "categoryId": "e3c26b1c-0098-4088-9b57-d0d20aae03a1",
+      "name": "queue",
+      "order": 0
+    },
+    {
+      "id": "a873977c-c2c1-4ea5-a00c-2fcec610a9f0",
+      "categoryId": "e3c26b1c-0098-4088-9b57-d0d20aae03a1",
+      "name": "monotonic queue",
+      "order": 1
     }
   ],
   "questions": [
@@ -226,6 +283,186 @@
       "solution": "https://youtu.be/ZI2z5pq0TqA?si=FcgDcHfWKHWdI7bq",
       "isDone": false,
       "order": 3
+    },
+    {
+      "id": "1b9e64ed-35cf-4dd7-8f05-4446f8666eb9",
+      "subcategoryId": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
+      "name": "Remove Duplicates from Sorted List",
+      "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-list/",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "f4789c8e-3497-4d02-8f1e-d996280c6cb9",
+      "subcategoryId": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
+      "name": "Merge Two Sorted Lists",
+      "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "c2705727-753f-4984-bce2-f80e6ebd0013",
+      "subcategoryId": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
+      "name": "Remove Nth Node from End of List",
+      "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "6767106a-f517-47ce-944f-0b4e04debfdb",
+      "subcategoryId": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
+      "name": "Copy List with Random Pointer",
+      "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+      "solution": "",
+      "isDone": false,
+      "order": 3
+    },
+    {
+      "id": "50eeae6d-61fd-448e-a907-1e865629cee6",
+      "subcategoryId": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
+      "name": "Swap Nodes in Pairs",
+      "url": "https://leetcode.com/problems/swap-nodes-in-pairs/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 4
+    },
+    {
+      "id": "543af97f-a058-4209-aef4-2402c27a441d",
+      "subcategoryId": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
+      "name": "Rotate List",
+      "url": "https://leetcode.com/problems/rotate-list/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 5
+    },
+    {
+      "id": "4aa30da7-f4f2-4eed-8c96-0898f600299b",
+      "subcategoryId": "a2bec02c-a8d6-4880-9f87-f578374bdc29",
+      "name": "Reverse Linked List",
+      "url": "https://leetcode.com/problems/reverse-linked-list",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "b30dfffd-e88a-4e86-bfd9-124c22f0f837",
+      "subcategoryId": "a2bec02c-a8d6-4880-9f87-f578374bdc29",
+      "name": "Reverse Nodes in k-Group",
+      "url": "https://leetcode.com/problems/reverse-nodes-in-k-group",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "00c6e462-0c71-4016-b901-b77ada8895b7",
+      "subcategoryId": "08c34329-d61a-4f1c-80d8-984c72822678",
+      "name": "Middle of the Linked List",
+      "url": "https://leetcode.com/problems/middle-of-the-linked-list",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "7034df9c-5f69-424a-b8a0-de3fa4ba8268",
+      "subcategoryId": "08c34329-d61a-4f1c-80d8-984c72822678",
+      "name": "Linked List Cycle II",
+      "url": "https://leetcode.com/problems/linked-list-cycle-ii",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "dc5acdd8-60a4-49d1-9a00-32d2f0307654",
+      "subcategoryId": "f289a51a-dc72-468f-8e45-4d404656b4a1",
+      "name": "Evaluate Reverse Polish Notation",
+      "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "ed016a62-84d9-41dc-a919-8821056ddf9c",
+      "subcategoryId": "f289a51a-dc72-468f-8e45-4d404656b4a1",
+      "name": "Remove Duplicate Letters",
+      "url": "https://leetcode.com/problems/remove-duplicate-letters",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "091a7adf-c860-4df3-8db7-f0c1944e51d7",
+      "subcategoryId": "f289a51a-dc72-468f-8e45-4d404656b4a1",
+      "name": "Min Stack",
+      "url": "https://leetcode.com/problems/min-stack",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "1aaf6cff-3b83-4d18-8619-3825ef93c132",
+      "subcategoryId": "f289a51a-dc72-468f-8e45-4d404656b4a1",
+      "name": "Longest Valid Parentheses",
+      "url": "https://leetcode.com/problems/longest-valid-parentheses",
+      "solution": "",
+      "isDone": false,
+      "order": 3
+    },
+    {
+      "id": "d3acba9e-1526-4044-8e89-359168a31e92",
+      "subcategoryId": "0dd66ba3-035b-46f3-b06d-f7bf0982a64f",
+      "name": "Daily Temperatures",
+      "url": "https://leetcode.com/problems/daily-temperatures",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "529bec5c-0548-4f32-84da-2d7d6cbeb51d",
+      "subcategoryId": "0dd66ba3-035b-46f3-b06d-f7bf0982a64f",
+      "name": "Largest Rectangle in Histogram",
+      "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "a00e15bd-90b1-41c2-9727-3acad5546ddf",
+      "subcategoryId": "0dd66ba3-035b-46f3-b06d-f7bf0982a64f",
+      "name": "Maximal Rectangle",
+      "url": "https://leetcode.com/problems/maximal-rectangle/",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "46a30812-b8c7-4e27-9980-24641781e4d2",
+      "subcategoryId": "54b57ca2-2dfc-47fc-9385-ec0e26f3e973",
+      "name": "First negative in every window of size k",
+      "url": "https://www.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "22f6ce05-3815-436a-8246-97acc79709d1",
+      "subcategoryId": "54b57ca2-2dfc-47fc-9385-ec0e26f3e973",
+      "name": "Stream First Non-repeating",
+      "url": "https://www.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "6632655c-4959-45c9-bf3a-bbef60134f44",
+      "subcategoryId": "a873977c-c2c1-4ea5-a00c-2fcec610a9f0",
+      "name": "Sliding Window Maximum",
+      "url": "https://leetcode.com/problems/sliding-window-maximum/submissions/",
+      "solution": "",
+      "isDone": false,
+      "order": 0
     }
   ]
 }
