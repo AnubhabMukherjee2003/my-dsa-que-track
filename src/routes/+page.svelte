@@ -23,6 +23,8 @@
 
 	let filteredQuestions = $state([]);
 	let searchInput = $state("");
+	let draggedQuestion = $state(null);
+	let dragOverIndex = $state(-1);
 
 	// Load data on mount
 	onMount(async () => {
@@ -190,6 +192,71 @@
 			filteredQuestions = [];
 		}
 	});
+
+	// Drag and drop handlers
+	function handleDragStart(e, question, index) {
+		draggedQuestion = question;
+		e.dataTransfer.effectAllowed = 'move';
+		e.dataTransfer.setData('text/html', e.target.outerHTML);
+		e.target.style.opacity = '0.5';
+	}
+
+	function handleDragEnd(e) {
+		e.target.style.opacity = '1';
+		draggedQuestion = null;
+		dragOverIndex = -1;
+	}
+
+	function handleDragOver(e, index) {
+		e.preventDefault();
+		e.dataTransfer.dropEffect = 'move';
+		dragOverIndex = index;
+	}
+
+	function handleDragLeave() {
+		dragOverIndex = -1;
+	}
+
+	async function handleDrop(e, targetIndex) {
+		e.preventDefault();
+		
+		if (!draggedQuestion) return;
+
+		const draggedIndex = filteredQuestions.findIndex(q => q.id === draggedQuestion.id);
+		
+		if (draggedIndex === targetIndex) {
+			dragOverIndex = -1;
+			return;
+		}
+
+		// Create new array with reordered questions
+		const newQuestions = [...filteredQuestions];
+		const [draggedItem] = newQuestions.splice(draggedIndex, 1);
+		newQuestions.splice(targetIndex, 0, draggedItem);
+
+		// Update the order property for all questions
+		const updatedQuestions = newQuestions.map((q, index) => ({
+			...q,
+			order: index
+		}));
+
+		// Update local state immediately for smooth UX
+		filteredQuestions = updatedQuestions;
+		questions.set(updatedQuestions);
+
+		// Update database with new order
+		try {
+			const questionIds = updatedQuestions.map(q => q.id);
+			await Database.updateQuestionOrder($selectedSubcategory?.id, questionIds);
+			await loadStats(); // Refresh stats if needed
+		} catch (error) {
+			console.error('Failed to update question order:', error);
+			// Revert on error
+			await loadQuestions($selectedSubcategory?.id);
+		}
+
+		dragOverIndex = -1;
+	}
 </script>
 
 <div class="min-h-screen flex flex-col w-full p-[clamp(0.5rem,3vw,2rem)]">
@@ -412,28 +479,30 @@
 							</div>
 						</div>
 
-						<div
-							class="grid gap-2 md:grid-cols-[minmax(80px,10vw)_1fr] md:gap-6"
-						>
-							{#each filteredQuestions as question}
-								<span
-									class="text-xs md:text-sm font-semibold text-muted uppercase tracking-wider pt-3 md:pt-4 md:pl-2 md:text-right md:col-span-1 font-mono"
-								>
-									{question.isDone ? "✓" : "○"}
-								</span>
+						<div class="space-y-2">
+							{#each filteredQuestions as question, index}
 								<div
-									class="py-2 md:py-4 border-b border-transparent md:col-span-1 group"
+									class="card-minimal group {dragOverIndex === index ? 'border-white border-2' : ''} cursor-move"
+									draggable="true"
+									ondragstart={(e) => handleDragStart(e, question, index)}
+									ondragend={handleDragEnd}
+									ondragover={(e) => handleDragOver(e, index)}
+									ondragleave={handleDragLeave}
+									ondrop={(e) => handleDrop(e, index)}
 								>
 									<div class="flex items-start gap-4">
-										<input
-											type="checkbox"
-											class="mt-1 accent-white w-4 h-4"
-											checked={question.isDone}
-											onchange={() =>
-												toggleQuestionDone(
-													question,
-												)}
-										/>
+										<div class="flex items-center gap-3">
+											<span class="text-muted cursor-grab active:cursor-grabbing">⋮⋮</span>
+											<input
+												type="checkbox"
+												class="accent-white w-4 h-4"
+												checked={question.isDone}
+												onchange={() => toggleQuestionDone(question)}
+											/>
+											<span class="text-xs font-semibold text-muted uppercase tracking-wider font-mono">
+												{question.isDone ? "✓" : "○"}
+											</span>
+										</div>
 										<div class="flex-1">
 											<h4
 												class="text-white font-medium mb-2 link-hover {question.isDone
@@ -466,18 +535,12 @@
 										>
 											<button
 												class="text-muted hover:text-white p-1 rounded text-sm"
-												onclick={() =>
-													openQuestionModal(
-														question,
-													)}>✏️</button
-											>
+												onclick={() => openQuestionModal(question)}
+											>✏️</button>
 											<button
 												class="text-muted hover:text-red-400 p-1 rounded text-sm"
-												onclick={() =>
-													deleteQuestion(
-														question.id,
-													)}>🗑️</button
-											>
+												onclick={() => deleteQuestion(question.id)}
+											>🗑️</button>
 										</div>
 									</div>
 								</div>

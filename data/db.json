@@ -110,6 +110,12 @@
       "categoryId": "e3c26b1c-0098-4088-9b57-d0d20aae03a1",
       "name": "monotonic queue",
       "order": 1
+    },
+    {
+      "id": "3771b524-f426-4961-89af-b614604af9a2",
+      "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
+      "name": "Sliding Window",
+      "order": 6
     }
   ],
   "questions": [
@@ -129,7 +135,7 @@
       "url": "https://leetcode.com/problems/majority-element",
       "solution": "https://youtu.be/7pnhv842keE?si=Ko6EQ02qxiqeeYny",
       "isDone": false,
-      "order": 0
+      "order": 4
     },
     {
       "id": "79737d0f-cebf-4196-92d2-6ee15d5fedf0",
@@ -138,7 +144,7 @@
       "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii",
       "solution": "https://youtu.be/3SJ3pUkPQMc?si=LYn2B73T92uVAwQ6",
       "isDone": false,
-      "order": 1
+      "order": 6
     },
     {
       "id": "ae7d3814-9cdb-4454-b459-e6b8ce286578",
@@ -147,7 +153,7 @@
       "url": "https://leetcode.com/problems/first-missing-positive",
       "solution": "https://youtu.be/8g78yfzMlao?si=JIo9kJhogsLiXCL4",
       "isDone": false,
-      "order": 2
+      "order": 7
     },
     {
       "id": "06c397a7-0119-41aa-9519-c6ff953df830",
@@ -201,7 +207,7 @@
       "url": "https://leetcode.com/problems/roman-to-integer/",
       "solution": "",
       "isDone": false,
-      "order": 3
+      "order": 2
     },
     {
       "id": "0c55d246-9e37-433a-9243-860a3187c8a8",
@@ -210,7 +216,7 @@
       "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
       "solution": "",
       "isDone": false,
-      "order": 4
+      "order": 5
     },
     {
       "id": "d6c1e47f-ee26-495e-86bb-5b1488d8404e",
@@ -219,7 +225,7 @@
       "url": "https://leetcode.com/problems/summary-ranges/",
       "solution": "",
       "isDone": false,
-      "order": 5
+      "order": 3
     },
     {
       "id": "ac8c381f-6ac7-4334-bdec-78e8bdae17b1",
@@ -228,7 +234,7 @@
       "url": "https://leetcode.com/problems/merge-intervals/",
       "solution": "",
       "isDone": false,
-      "order": 6
+      "order": 0
     },
     {
       "id": "e14bb0aa-46fc-47d4-8240-f0442e1394d6",
@@ -463,6 +469,60 @@
       "solution": "",
       "isDone": false,
       "order": 0
+    },
+    {
+      "id": "bfb3b99e-f416-4381-851d-87f076b43a57",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Product of Array Except Self",
+      "url": "https://leetcode.com/problems/product-of-array-except-self",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "c2ec535a-45ba-460a-8e39-8158a7071268",
+      "subcategoryId": "3771b524-f426-4961-89af-b614604af9a2",
+      "name": "Find All Anagrams in a String",
+      "url": "https://leetcode.com/problems/find-all-anagrams-in-a-string",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "f960e6d3-b820-49f1-9c20-c29d803689ad",
+      "subcategoryId": "3771b524-f426-4961-89af-b614604af9a2",
+      "name": "Max Consecutive Ones III",
+      "url": "https://leetcode.com/problems/max-consecutive-ones-iii/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "3011620a-f077-4e75-999d-c0a8a8895d80",
+      "subcategoryId": "3771b524-f426-4961-89af-b614604af9a2",
+      "name": "Longest Substring Without Repeating Characters",
+      "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "4b998564-6961-43e3-bede-01eb12127cca",
+      "subcategoryId": "3771b524-f426-4961-89af-b614604af9a2",
+      "name": "Longest Repeating Character Replacement",
+      "url": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+      "solution": "",
+      "isDone": false,
+      "order": 4
+    },
+    {
+      "id": "0292b992-b35e-4f23-a5c4-d2792b883507",
+      "subcategoryId": "3771b524-f426-4961-89af-b614604af9a2",
+      "name": "Minimum Size Subarray Sum",
+      "url": "https://leetcode.com/problems/minimum-size-subarray-sum/",
+      "solution": "",
+      "isDone": false,
+      "order": 3
     }
   ]
 }

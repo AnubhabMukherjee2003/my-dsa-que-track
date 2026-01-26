@@ -97,6 +97,15 @@ export class Database {
     return await response.json();
   }
 
+  static async updateQuestionOrder(subcategoryId, questionIds) {
+    const response = await fetch('/api/questions/reorder', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subcategoryId, questionIds })
+    });
+    return await response.json();
+  }
+
   static async deleteQuestion(id) {
     const response = await fetch('/api/questions', {
       method: 'DELETE',
