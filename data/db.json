@@ -652,6 +652,69 @@
       "solution": "",
       "isDone": false,
       "order": 3
+    },
+    {
+      "id": "92b5b0e5-6af2-4eb2-b0ba-dcfee55a848b",
+      "subcategoryId": "eb6eabd9-1de3-4c69-9080-3e7b1567bd76",
+      "name": "Search Insert Position",
+      "url": "https://leetcode.com/problems/search-insert-position",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "e1de0347-6fc7-44f7-918f-ca61ef2e1ed1",
+      "subcategoryId": "eb6eabd9-1de3-4c69-9080-3e7b1567bd76",
+      "name": "Find First and Last Position of Element in Sorted Array",
+      "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "ab0885d0-6201-4a0b-ab5e-2fc2df93c220",
+      "subcategoryId": "eb6eabd9-1de3-4c69-9080-3e7b1567bd76",
+      "name": "Find Peak Element",
+      "url": "https://leetcode.com/problems/find-peak-element",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "9b1abb4c-9c08-4d22-ba8e-477b2cd36545",
+      "subcategoryId": "eb6eabd9-1de3-4c69-9080-3e7b1567bd76",
+      "name": "Search in Rotated Sorted Array II",
+      "url": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
+      "solution": "",
+      "isDone": false,
+      "order": 3
+    },
+    {
+      "id": "ebf44eb9-e4e0-4b1e-8034-020cd9ae1752",
+      "subcategoryId": "eb6eabd9-1de3-4c69-9080-3e7b1567bd76",
+      "name": "Find Minimum in Rotated Sorted Array",
+      "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 4
+    },
+    {
+      "id": "09d4dddb-bde7-419b-aa7d-1a9ae017cf80",
+      "subcategoryId": "eb6eabd9-1de3-4c69-9080-3e7b1567bd76",
+      "name": "Koko Eating Bananas",
+      "url": "https://leetcode.com/problems/koko-eating-bananas",
+      "solution": "",
+      "isDone": false,
+      "order": 5
+    },
+    {
+      "id": "4288d06a-ba81-460a-9e3e-d79e99dd79d7",
+      "subcategoryId": "54b57ca2-2dfc-47fc-9385-ec0e26f3e973",
+      "name": "Gas Station",
+      "url": "https://leetcode.com/problems/gas-station/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 2
     }
   ]
 }
