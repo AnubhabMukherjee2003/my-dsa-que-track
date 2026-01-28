@@ -29,6 +29,15 @@ export class Database {
     return await response.json();
   }
 
+  static async updateCategoryOrder(categoryIds) {
+    const response = await fetch('/api/categories/reorder', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ categoryIds })
+    });
+    return await response.json();
+  }
+
   static async deleteCategory(id) {
     const response = await fetch('/api/categories', {
       method: 'DELETE',
@@ -59,6 +68,15 @@ export class Database {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, updates })
+    });
+    return await response.json();
+  }
+
+  static async updateSubcategoryOrder(categoryId, subcategoryIds) {
+    const response = await fetch('/api/subcategories/reorder', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ categoryId, subcategoryIds })
     });
     return await response.json();
   }
