@@ -7,7 +7,7 @@
     },
     {
       "id": "12db85f7-3719-4d10-aec9-8f106a5a8809",
-      "name": "Array & Strings",
+      "name": "Arrays & Strings",
       "order": 1
     },
     {
@@ -36,25 +36,25 @@
     {
       "id": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
-      "name": "array",
+      "name": "arrays",
       "order": 0
     },
     {
       "id": "c3128383-5e0b-4435-991a-d8ef61589461",
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
-      "name": "Prefix Sum",
+      "name": "prefix sum",
       "order": 6
     },
     {
       "id": "ef3d2b54-dd9b-4242-a6ee-386d9688d724",
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
-      "name": "Kadane's Algorithm",
+      "name": "kadane's algorithm",
       "order": 7
     },
     {
       "id": "803e4ce0-e824-4559-8586-1e56f0d61a14",
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
-      "name": "Matrix",
+      "name": "matrix",
       "order": 1
     },
     {
@@ -66,7 +66,7 @@
     {
       "id": "d01571b6-8208-42c4-a041-11dbcb3f4961",
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
-      "name": "2 Pointer",
+      "name": "2 pointer",
       "order": 4
     },
     {
@@ -114,7 +114,7 @@
     {
       "id": "3771b524-f426-4961-89af-b614604af9a2",
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
-      "name": "Sliding Window",
+      "name": "sliding window",
       "order": 5
     },
     {
@@ -122,6 +122,12 @@
       "categoryId": "12db85f7-3719-4d10-aec9-8f106a5a8809",
       "name": "binary search",
       "order": 3
+    },
+    {
+      "id": "9e4df904-88d7-42f9-8222-de29b7633b12",
+      "categoryId": "f90de746-9e2c-416b-8dc7-0f48065c55fa",
+      "name": "basic operation",
+      "order": 1
     }
   ],
   "questions": [
@@ -141,7 +147,7 @@
       "url": "https://leetcode.com/problems/majority-element",
       "solution": "https://youtu.be/7pnhv842keE?si=Ko6EQ02qxiqeeYny",
       "isDone": false,
-      "order": 4
+      "order": 7
     },
     {
       "id": "79737d0f-cebf-4196-92d2-6ee15d5fedf0",
@@ -159,7 +165,7 @@
       "url": "https://leetcode.com/problems/first-missing-positive",
       "solution": "https://youtu.be/8g78yfzMlao?si=JIo9kJhogsLiXCL4",
       "isDone": false,
-      "order": 7
+      "order": 8
     },
     {
       "id": "06c397a7-0119-41aa-9519-c6ff953df830",
@@ -213,7 +219,7 @@
       "url": "https://leetcode.com/problems/roman-to-integer/",
       "solution": "",
       "isDone": false,
-      "order": 2
+      "order": 4
     },
     {
       "id": "0c55d246-9e37-433a-9243-860a3187c8a8",
@@ -231,7 +237,7 @@
       "url": "https://leetcode.com/problems/summary-ranges/",
       "solution": "",
       "isDone": false,
-      "order": 3
+      "order": 2
     },
     {
       "id": "ac8c381f-6ac7-4334-bdec-78e8bdae17b1",
@@ -240,7 +246,7 @@
       "url": "https://leetcode.com/problems/merge-intervals/",
       "solution": "",
       "isDone": false,
-      "order": 0
+      "order": 1
     },
     {
       "id": "e14bb0aa-46fc-47d4-8240-f0442e1394d6",
@@ -258,7 +264,7 @@
       "url": "https://leetcode.com/problems/reverse-words-in-a-string",
       "solution": "",
       "isDone": false,
-      "order": 1
+      "order": 3
     },
     {
       "id": "f4e4d2f0-5839-465d-9cbe-d0ccf6b3972d",
@@ -312,7 +318,7 @@
       "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
       "solution": "",
       "isDone": false,
-      "order": 1
+      "order": 3
     },
     {
       "id": "c2705727-753f-4984-bce2-f80e6ebd0013",
@@ -321,22 +327,13 @@
       "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
       "solution": "",
       "isDone": false,
-      "order": 2
+      "order": 1
     },
     {
       "id": "6767106a-f517-47ce-944f-0b4e04debfdb",
       "subcategoryId": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
       "name": "Copy List with Random Pointer",
       "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
-      "solution": "",
-      "isDone": false,
-      "order": 3
-    },
-    {
-      "id": "50eeae6d-61fd-448e-a907-1e865629cee6",
-      "subcategoryId": "20fe82c5-fc13-4cdc-9721-22bd69817fb1",
-      "name": "Swap Nodes in Pairs",
-      "url": "https://leetcode.com/problems/swap-nodes-in-pairs/description/",
       "solution": "",
       "isDone": false,
       "order": 4
@@ -348,7 +345,7 @@
       "url": "https://leetcode.com/problems/rotate-list/description/",
       "solution": "",
       "isDone": false,
-      "order": 5
+      "order": 2
     },
     {
       "id": "4aa30da7-f4f2-4eed-8c96-0898f600299b",
@@ -366,7 +363,7 @@
       "url": "https://leetcode.com/problems/reverse-nodes-in-k-group",
       "solution": "",
       "isDone": false,
-      "order": 1
+      "order": 2
     },
     {
       "id": "00c6e462-0c71-4016-b901-b77ada8895b7",
@@ -411,7 +408,7 @@
       "url": "https://leetcode.com/problems/min-stack",
       "solution": "",
       "isDone": false,
-      "order": 2
+      "order": 4
     },
     {
       "id": "1aaf6cff-3b83-4d18-8619-3825ef93c132",
@@ -420,7 +417,7 @@
       "url": "https://leetcode.com/problems/longest-valid-parentheses",
       "solution": "",
       "isDone": false,
-      "order": 3
+      "order": 5
     },
     {
       "id": "d3acba9e-1526-4044-8e89-359168a31e92",
@@ -483,7 +480,7 @@
       "url": "https://leetcode.com/problems/product-of-array-except-self",
       "solution": "",
       "isDone": false,
-      "order": 1
+      "order": 3
     },
     {
       "id": "c2ec535a-45ba-460a-8e39-8158a7071268",
@@ -538,6 +535,123 @@
       "solution": "",
       "isDone": false,
       "order": 5
+    },
+    {
+      "id": "3dd630b9-d4a8-428a-9e37-57f8e8222d89",
+      "subcategoryId": "e18793f1-e58b-409a-8b37-fa8474051a96",
+      "name": "Complement of Base 10 Integer",
+      "url": "https://leetcode.com/problems/complement-of-base-10-integer/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "05327495-912d-40dd-8b5f-cc9e68df0394",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Intersection of Two Arrays",
+      "url": "https://leetcode.com/problems/intersection-of-two-arrays/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "6782631b-367e-40d3-81bb-9a4c02e37d01",
+      "subcategoryId": "ce9da99b-8dd0-4ddc-980c-119839b3ceb9",
+      "name": "Merge Sorted Array",
+      "url": "https://leetcode.com/problems/merge-sorted-array/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 9
+    },
+    {
+      "id": "88709272-6066-40ed-86e3-92a2f4371329",
+      "subcategoryId": "0a5d7c64-c55f-4ee7-93d9-3455e59f40a1",
+      "name": "String Compression",
+      "url": "https://leetcode.com/problems/string-compression/",
+      "solution": "",
+      "isDone": false,
+      "order": 4
+    },
+    {
+      "id": "0f075e7a-dab5-4ed6-9828-2dedca0ad19a",
+      "subcategoryId": "0a5d7c64-c55f-4ee7-93d9-3455e59f40a1",
+      "name": "Remove All Occurrences of a Substring",
+      "url": "https://leetcode.com/problems/remove-all-occurrences-of-a-substring/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "dc3ee059-2e97-43e2-a96d-5daa3e99857d",
+      "subcategoryId": "0a5d7c64-c55f-4ee7-93d9-3455e59f40a1",
+      "name": "Remove All Adjacent Duplicates In String",
+      "url": "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "14e40a43-154f-4b41-bc77-14e7993bc284",
+      "subcategoryId": "803e4ce0-e824-4559-8586-1e56f0d61a14",
+      "name": "Search a 2D Matrix",
+      "url": "https://leetcode.com/problems/search-a-2d-matrix/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "e62f7ab6-13fb-4e37-aaaf-8786d2dba17e",
+      "subcategoryId": "803e4ce0-e824-4559-8586-1e56f0d61a14",
+      "name": "Search a 2D Matrix II",
+      "url": "https://leetcode.com/problems/search-a-2d-matrix-ii/",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "63c41d5d-ffd8-400e-9c9f-d57f2f0c0364",
+      "subcategoryId": "9e4df904-88d7-42f9-8222-de29b7633b12",
+      "name": "Count Primes",
+      "url": "https://leetcode.com/problems/count-primes/",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "34311e42-cab5-493b-b2b9-decefe566f15",
+      "subcategoryId": "9e4df904-88d7-42f9-8222-de29b7633b12",
+      "name": "GCD of two numbers",
+      "url": "https://www.geeksforgeeks.org/problems/gcd-of-two-numbers3459/1",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "1218adc1-96f0-4fdf-8e7b-04f1350d0a30",
+      "subcategoryId": "a2bec02c-a8d6-4880-9f87-f578374bdc29",
+      "name": "Swap Nodes in Pairs",
+      "url": "https://leetcode.com/problems/swap-nodes-in-pairs/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "a18de65b-7a3f-493f-8b30-a0aa16b5d5d8",
+      "subcategoryId": "f289a51a-dc72-468f-8e45-4d404656b4a1",
+      "name": "redundant parentheses",
+      "url": "https://www.geeksforgeeks.org/problems/expression-contains-redundant-bracket-or-not/1",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "60e9554b-c60f-446c-b45a-9f02ab6d6167",
+      "subcategoryId": "f289a51a-dc72-468f-8e45-4d404656b4a1",
+      "name": "Min Add to Make Parentheses Valid",
+      "url": "https://www.geeksforgeeks.org/problems/min-add-to-make-parentheses-valid/1",
+      "solution": "",
+      "isDone": false,
+      "order": 3
     }
   ]
 }
