@@ -1,4 +1,5 @@
 <script>
+	// @ts-nocheck
 	import { onMount } from "svelte";
 	import { Database } from "$lib/database.js";
 	import {
@@ -29,6 +30,22 @@
 	let draggedSubcategory = $state(null);
 	let categoryDragOverIndex = $state(-1);
 	let subcategoryDragOverIndex = $state(-1);
+	let selectedCategoryId = $state(null);
+	let selectedSubcategoryId = $state(null);
+	let selectedSubcategoryName = $state("");
+
+	$effect(() => {
+		selectedCategoryId = $selectedCategory?.id ?? null;
+		selectedSubcategoryId = $selectedSubcategory?.id ?? null;
+		selectedSubcategoryName = $selectedSubcategory?.name ?? "";
+	});
+
+	function getCategoryStats(categoryId) {
+		const allStats = /** @type {Record<string, { done: number; total: number; percentage: number }>} */ (
+			$stats ?? {}
+		);
+		return allStats[categoryId] ?? null;
+	}
 
 	// Load data on mount
 	onMount(async () => {
@@ -400,21 +417,15 @@
 		class="flex-1 border-subtle border-t-0 rounded-b-lg"
 		style="flex-basis: 70%"
 	>
-		<div class="p-4 h-full flex flex-col lg:flex-row gap-6">
-			<!-- Sidebar with Categories and Subcategories -->
+		<div class="p-4 h-full flex flex-col lg:grid lg:grid-cols-[18rem_minmax(0,1fr)_18rem] gap-6 items-start">
+			<!-- Left Column: Categories -->
 			<aside
-				class="w-full lg:w-80 border-subtle rounded-lg p-6 h-fit lg:sticky lg:top-6"
+				class="w-full border-subtle rounded-lg p-6 h-fit lg:sticky lg:top-6"
 			>
-				<!-- Categories Section -->
-				<div class="mb-6">
-					<div
-						class="flex justify-between items-center mb-4 pb-3 border-b border-[#444]"
-					>
+				<div class="mb-0">
+					<div class="flex justify-between items-center mb-4 pb-3 border-b border-[#444]">
 						<h3 class="text-lg font-semibold text-white">Categories</h3>
-						<button
-							class="btn-primary text-sm"
-							onclick={() => openCategoryModal()}
-						>
+						<button class="btn-primary text-sm" onclick={() => openCategoryModal()}>
 							+ Add
 						</button>
 					</div>
@@ -422,10 +433,7 @@
 					<div class="space-y-2">
 						{#each $categories as category, index}
 							<div
-								class="card-minimal group {$selectedCategory?.id ===
-								category.id
-									? 'card-active'
-									: ''} {categoryDragOverIndex === index ? 'border-white border-2' : ''} cursor-move"
+								class="card-minimal group {selectedCategoryId === category.id ? 'card-active' : ''} {categoryDragOverIndex === index ? 'border-white border-2' : ''} cursor-move"
 								draggable="true"
 								ondragstart={(e) => handleCategoryDragStart(e, category, index)}
 								ondragend={handleCategoryDragEnd}
@@ -441,134 +449,31 @@
 									<div class="flex items-center gap-3 flex-1">
 										<span class="text-muted cursor-grab active:cursor-grabbing">⋮⋮</span>
 										<div class="flex-1">
-											<span
-												class="text-white font-medium block mb-2"
-												>{category.name}</span
-											>
-											{#if $stats[category.id]}
-												<div
-													class="text-xs text-muted mb-2 font-mono"
-												>
-													{$stats[category.id].done}/{$stats[
-														category.id
-													].total}
-													({$stats[category.id].percentage}%)
+											<span class="text-white font-medium block mb-2">{category.name}</span>
+											{#if getCategoryStats(category.id)}
+												<div class="text-xs text-muted mb-2 font-mono">
+													{getCategoryStats(category.id).done}/{getCategoryStats(category.id).total}
+													({getCategoryStats(category.id).percentage}%)
 												</div>
-												<div
-													class="w-full bg-[#333] rounded-full h-1"
-												>
-													<div
-														class="bg-white h-1 rounded-full transition-all duration-300"
-														style="width: {$stats[
-															category.id
-														].percentage}%"
-													></div>
+												<div class="w-full bg-[#333] rounded-full h-1">
+													<div class="bg-white h-1 rounded-full transition-all duration-300" style="width: {getCategoryStats(category.id).percentage}%"></div>
 												</div>
 											{/if}
 										</div>
 									</div>
-									<div
-										class="flex gap-2 ml-4 opacity-0 group-hover:opacity-100 transition-opacity"
-									>
-										<button
-											class="text-muted hover:text-white p-1 rounded text-sm"
-											onclick={(e) => {
-												e.stopPropagation();
-												openCategoryModal(category);
-											}}>✏️</button
-										>
-										<button
-											class="text-muted hover:text-red-400 p-1 rounded text-sm"
-											onclick={(e) => {
-												e.stopPropagation();
-												deleteCategory(category.id);
-											}}>🗑️</button
-										>
+									<div class="flex gap-2 ml-4 opacity-0 group-hover:opacity-100 transition-opacity">
+										<button class="text-muted hover:text-white p-1 rounded text-sm" onclick={(e) => { e.stopPropagation(); openCategoryModal(category); }}>✏️</button>
+										<button class="text-muted hover:text-red-400 p-1 rounded text-sm" onclick={(e) => { e.stopPropagation(); deleteCategory(category.id); }}>🗑️</button>
 									</div>
 								</div>
 							</div>
 						{/each}
 					</div>
 				</div>
-
-				<!-- Subcategories Section -->
-				{#if $selectedCategory}
-					<div>
-						<div
-							class="flex justify-between items-center mb-4 pb-3 border-b border-[#444]"
-						>
-							<h3 class="text-lg font-semibold text-white">
-								Subcategories
-							</h3>
-							<button
-								class="btn-primary text-sm"
-								onclick={() => openSubcategoryModal()}
-							>
-								+ Add
-							</button>
-						</div>
-
-						<div class="space-y-2">
-							{#each $subcategories as subcategory, index}
-								<div
-									class="card-minimal group {$selectedSubcategory?.id ===
-									subcategory.id
-										? 'card-active'
-										: ''} {subcategoryDragOverIndex === index ? 'border-white border-2' : ''} cursor-move"
-									draggable="true"
-									ondragstart={(e) => handleSubcategoryDragStart(e, subcategory, index)}
-									ondragend={handleSubcategoryDragEnd}
-									ondragover={(e) => handleSubcategoryDragOver(e, index)}
-									ondragleave={handleSubcategoryDragLeave}
-									ondrop={(e) => handleSubcategoryDrop(e, index)}
-									onclick={() => selectSubcategory(subcategory)}
-									role="button"
-									tabindex="0"
-									onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectSubcategory(subcategory); } }}
-								>
-									<div
-										class="flex justify-between items-center"
-									>
-										<div class="flex items-center gap-3 flex-1">
-											<span class="text-muted cursor-grab active:cursor-grabbing">⋮⋮</span>
-											<h4
-												class="text-white font-medium link-hover"
-											>
-												{subcategory.name}
-											</h4>
-										</div>
-										<div
-											class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
-										>
-											<button
-												class="text-muted hover:text-white p-1 rounded text-sm"
-												onclick={(e) => {
-													e.stopPropagation();
-													openSubcategoryModal(
-														subcategory,
-													);
-												}}>✏️</button
-											>
-											<button
-												class="text-muted hover:text-red-400 p-1 rounded text-sm"
-												onclick={(e) => {
-													e.stopPropagation();
-													deleteSubcategory(
-														subcategory.id,
-													);
-												}}>🗑️</button
-											>
-										</div>
-									</div>
-								</div>
-							{/each}
-						</div>
-					</div>
-				{/if}
 			</aside>
 
-			<!-- Main Content Area -->
-			<section class="flex-1 flex flex-col">
+			<!-- Center Column: Questions -->
+			<section class="flex-1 flex flex-col w-full">
 				{#if $selectedSubcategory}
 					<!-- Questions -->
 					<div class="flex-1">
@@ -576,7 +481,7 @@
 							class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 pb-4 border-b border-[#444] gap-4"
 						>
 							<h3 class="text-2xl font-semibold text-white">
-								Questions - {$selectedSubcategory.name}
+									Questions - {selectedSubcategoryName}
 							</h3>
 							<div
 								class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
@@ -599,7 +504,7 @@
 											checked={$showCompleted}
 											onchange={(e) =>
 												showCompleted.set(
-													e.target.checked,
+													/** @type {HTMLInputElement} */ (e.currentTarget).checked,
 												)}
 										/>
 										Completed
@@ -613,7 +518,7 @@
 											checked={$showPending}
 											onchange={(e) =>
 												showPending.set(
-													e.target.checked,
+													/** @type {HTMLInputElement} */ (e.currentTarget).checked,
 												)}
 										/>
 										Pending
@@ -633,6 +538,7 @@
 								<div
 									class="card-minimal group {dragOverIndex === index ? 'border-white border-2' : ''} cursor-move"
 									draggable="true"
+									role="listitem"
 									ondragstart={(e) => handleDragStart(e, question, index)}
 									ondragend={handleDragEnd}
 									ondragover={(e) => handleDragOver(e, index)}
@@ -700,6 +606,47 @@
 					<Welcome onCreateCategory={() => openCategoryModal()} />
 				{/if}
 			</section>
+
+			<!-- Right Column: Subcategories -->
+			{#if $selectedCategory}
+				<aside class="w-full border-subtle rounded-lg p-6 h-fit lg:sticky lg:top-6">
+					<div class="flex justify-between items-center mb-4 pb-3 border-b border-[#444]">
+						<h3 class="text-lg font-semibold text-white">Subcategories</h3>
+						<button class="btn-primary text-sm" onclick={() => openSubcategoryModal()}>
+							+ Add
+						</button>
+					</div>
+
+					<div class="space-y-2">
+						{#each $subcategories as subcategory, index}
+							<div
+								class="card-minimal group {selectedSubcategoryId === subcategory.id ? 'card-active' : ''} {subcategoryDragOverIndex === index ? 'border-white border-2' : ''} cursor-move"
+								draggable="true"
+								ondragstart={(e) => handleSubcategoryDragStart(e, subcategory, index)}
+								ondragend={handleSubcategoryDragEnd}
+								ondragover={(e) => handleSubcategoryDragOver(e, index)}
+								ondragleave={handleSubcategoryDragLeave}
+								ondrop={(e) => handleSubcategoryDrop(e, index)}
+								onclick={() => selectSubcategory(subcategory)}
+								role="button"
+								tabindex="0"
+								onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectSubcategory(subcategory); } }}
+							>
+								<div class="flex justify-between items-center">
+									<div class="flex items-center gap-3 flex-1">
+										<span class="text-muted cursor-grab active:cursor-grabbing">⋮⋮</span>
+										<h4 class="text-white font-medium link-hover">{subcategory.name}</h4>
+									</div>
+									<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+										<button class="text-muted hover:text-white p-1 rounded text-sm" onclick={(e) => { e.stopPropagation(); openSubcategoryModal(subcategory); }}>✏️</button>
+										<button class="text-muted hover:text-red-400 p-1 rounded text-sm" onclick={(e) => { e.stopPropagation(); deleteSubcategory(subcategory.id); }}>🗑️</button>
+									</div>
+								</div>
+							</div>
+						{/each}
+					</div>
+				</aside>
+			{/if}
 		</div>
 	</main>
 

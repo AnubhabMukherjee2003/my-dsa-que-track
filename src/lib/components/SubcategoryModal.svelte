@@ -26,7 +26,7 @@
 </script>
 
 {#if $showSubcategoryModal}
-	<div class="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onclick={closeModal}>
+	<div class="fixed inset-0 bg-black/80 flex items-center justify-end z-50 pr-6" onclick={closeModal}>
 		<div class="bg-[#1a1a1a] border-subtle rounded-lg p-8 max-w-md w-full mx-4" onclick={(e) => e.stopPropagation()}>
 			<h3 class="text-2xl font-semibold text-white mb-6">
 				{$editingItem ? 'Edit Subcategory' : 'Add Subcategory'}

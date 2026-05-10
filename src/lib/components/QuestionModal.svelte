@@ -36,8 +36,9 @@
 </script>
 
 {#if $showQuestionModal}
-	<div class="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onclick={closeModal}>
-		<div class="bg-[#1a1a1a] border-subtle rounded-lg p-8 max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto" onclick={(e) => e.stopPropagation()}>
+	<div class="fixed inset-0 bg-black/80 z-50" onclick={closeModal}>
+		<div class="absolute inset-y-0 right-0 flex w-full justify-end p-4 sm:p-6 lg:p-8">
+			<div class="bg-[#1a1a1a] border-subtle rounded-l-2xl rounded-r-none p-8 w-full max-w-xl h-full overflow-y-auto shadow-2xl" onclick={(e) => e.stopPropagation()}>
 			<h3 class="text-2xl font-semibold text-white mb-6">
 				{$editingItem ? 'Edit Question' : 'Add Question'}
 			</h3>
@@ -93,6 +94,7 @@
 					</button>
 				</div>
 			</form>
+		</div>
 		</div>
 	</div>
 {/if}
