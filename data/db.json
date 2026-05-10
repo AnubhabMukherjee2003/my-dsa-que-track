@@ -24,6 +24,16 @@
       "id": "e3c26b1c-0098-4088-9b57-d0d20aae03a1",
       "name": "Queue",
       "order": 4
+    },
+    {
+      "id": "77f911d8-213b-4f69-aae3-22b32a9e63f4",
+      "name": "B-tree",
+      "order": 5
+    },
+    {
+      "id": "8b739d91-79bd-4f94-bb9e-f15457cb46c3",
+      "name": "BST",
+      "order": 6
     }
   ],
   "subcategories": [
@@ -128,6 +138,24 @@
       "categoryId": "f90de746-9e2c-416b-8dc7-0f48065c55fa",
       "name": "basic operation",
       "order": 1
+    },
+    {
+      "id": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "categoryId": "77f911d8-213b-4f69-aae3-22b32a9e63f4",
+      "name": "basics",
+      "order": 0
+    },
+    {
+      "id": "69de8cba-768d-435a-973b-655cabcca28a",
+      "categoryId": "77f911d8-213b-4f69-aae3-22b32a9e63f4",
+      "name": "traversal",
+      "order": 1
+    },
+    {
+      "id": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "categoryId": "77f911d8-213b-4f69-aae3-22b32a9e63f4",
+      "name": "problems",
+      "order": 2
     }
   ],
   "questions": [
@@ -147,7 +175,7 @@
       "url": "https://leetcode.com/problems/majority-element",
       "solution": "https://youtu.be/7pnhv842keE?si=Ko6EQ02qxiqeeYny",
       "isDone": false,
-      "order": 7
+      "order": 8
     },
     {
       "id": "79737d0f-cebf-4196-92d2-6ee15d5fedf0",
@@ -156,7 +184,7 @@
       "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii",
       "solution": "https://youtu.be/3SJ3pUkPQMc?si=LYn2B73T92uVAwQ6",
       "isDone": false,
-      "order": 6
+      "order": 7
     },
     {
       "id": "ae7d3814-9cdb-4454-b459-e6b8ce286578",
@@ -165,7 +193,7 @@
       "url": "https://leetcode.com/problems/first-missing-positive",
       "solution": "https://youtu.be/8g78yfzMlao?si=JIo9kJhogsLiXCL4",
       "isDone": false,
-      "order": 8
+      "order": 9
     },
     {
       "id": "06c397a7-0119-41aa-9519-c6ff953df830",
@@ -219,7 +247,7 @@
       "url": "https://leetcode.com/problems/roman-to-integer/",
       "solution": "",
       "isDone": false,
-      "order": 4
+      "order": 5
     },
     {
       "id": "0c55d246-9e37-433a-9243-860a3187c8a8",
@@ -228,7 +256,7 @@
       "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
       "solution": "",
       "isDone": false,
-      "order": 5
+      "order": 6
     },
     {
       "id": "d6c1e47f-ee26-495e-86bb-5b1488d8404e",
@@ -561,7 +589,7 @@
       "url": "https://leetcode.com/problems/merge-sorted-array/description/",
       "solution": "",
       "isDone": false,
-      "order": 9
+      "order": 4
     },
     {
       "id": "88709272-6066-40ed-86e3-92a2f4371329",
@@ -715,6 +743,213 @@
       "solution": "",
       "isDone": false,
       "order": 2
+    },
+    {
+      "id": "dcc61ed1-7820-44d5-b335-4809f53ac06f",
+      "subcategoryId": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "name": "level order",
+      "url": "file:///home/hikki/codiing/dsa/tree/basic_1_bfs.cpp",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "452943b5-eaa4-4446-b075-ebd64bb6a5aa",
+      "subcategoryId": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "name": "in/pre/post order",
+      "url": "file:///home/hikki/codiing/dsa/tree/basic_1_dfs.cpp",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "c829d793-1c27-46dc-8ceb-1608ea80fded",
+      "subcategoryId": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "name": "level oder traversal with seperator",
+      "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "c3458d27-b1b8-4c97-b366-23b2032a12e1",
+      "subcategoryId": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "name": "Binary Tree from Preorder and Inorder Traversal",
+      "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 3
+    },
+    {
+      "id": "80afb29b-e8fc-4d08-aae8-3b8463db141d",
+      "subcategoryId": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "name": "Binary Tree from Inorder and Postorder Traversal",
+      "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 4
+    },
+    {
+      "id": "c662318c-dabd-40ef-99d3-756febce0c79",
+      "subcategoryId": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "name": "Morris traversal for Inorder",
+      "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/submissions/1997866656/",
+      "solution": "",
+      "isDone": false,
+      "order": 5
+    },
+    {
+      "id": "503f96e5-5142-4d39-9a22-d0842ae994db",
+      "subcategoryId": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "name": "Morris traversal for Preorder",
+      "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+      "solution": "",
+      "isDone": false,
+      "order": 6
+    },
+    {
+      "id": "4d054139-8a4e-4297-8dc0-963ffbc4daca",
+      "subcategoryId": "4b76c9e9-0183-4b37-9b4e-57c8dd250bf7",
+      "name": "Flatten Binary Tree to Linked List",
+      "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 7
+    },
+    {
+      "id": "19b76311-6d02-4458-a31b-fac52ddadd67",
+      "subcategoryId": "69de8cba-768d-435a-973b-655cabcca28a",
+      "name": "Binary Tree Zigzag Level Order Traversal",
+      "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "d02100b5-45e4-4b47-ba96-bb5e612b138e",
+      "subcategoryId": "69de8cba-768d-435a-973b-655cabcca28a",
+      "name": "Tree Boundary Traversal",
+      "url": "https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "4e798c5d-ed57-445e-9a3d-f696be8519b8",
+      "subcategoryId": "69de8cba-768d-435a-973b-655cabcca28a",
+      "name": "Top View of Binary Tree",
+      "url": "https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "27fa69e5-d4bf-4e66-a191-64b1a7561122",
+      "subcategoryId": "69de8cba-768d-435a-973b-655cabcca28a",
+      "name": "Bottom View of Binary Tree",
+      "url": "https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1",
+      "solution": "",
+      "isDone": false,
+      "order": 3
+    },
+    {
+      "id": "eb108cc7-eb82-4d31-a7c2-be4011e41146",
+      "subcategoryId": "69de8cba-768d-435a-973b-655cabcca28a",
+      "name": "Left View of Binary Tree",
+      "url": "https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1",
+      "solution": "",
+      "isDone": false,
+      "order": 4
+    },
+    {
+      "id": "aef24e20-8965-4629-8840-c8f7f6e9764d",
+      "subcategoryId": "69de8cba-768d-435a-973b-655cabcca28a",
+      "name": "Binary Tree Right Side View",
+      "url": "https://leetcode.com/problems/binary-tree-right-side-view/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 5
+    },
+    {
+      "id": "ebe71bda-293f-47de-8939-e561608c28b5",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Count Leaves in Binary Tree",
+      "url": "https://www.geeksforgeeks.org/problems/count-leaves-in-binary-tree/1",
+      "solution": "",
+      "isDone": false,
+      "order": 0
+    },
+    {
+      "id": "6dc1ba3e-728a-4c84-b427-f388d91d9713",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Height of Binary Tree",
+      "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+      "solution": "",
+      "isDone": false,
+      "order": 1
+    },
+    {
+      "id": "55bc261e-209c-47d2-aad7-8cd90a5ad03a",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Diameter of Binary Tree",
+      "url": "https://leetcode.com/problems/diameter-of-binary-tree/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 2
+    },
+    {
+      "id": "b4e93d11-f396-4e5d-8029-21fcd4104b23",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Balanced Binary Tree",
+      "url": "https://leetcode.com/problems/balanced-binary-tree/",
+      "solution": "",
+      "isDone": false,
+      "order": 3
+    },
+    {
+      "id": "f7cafc09-b5b5-45a7-aa93-0fef35e53731",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Sum Tree",
+      "url": "https://www.geeksforgeeks.org/problems/sum-tree/1",
+      "solution": "",
+      "isDone": false,
+      "order": 4
+    },
+    {
+      "id": "46460c60-9f75-4e78-ba56-ddcb1d886226",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Same Tree",
+      "url": "https://leetcode.com/problems/same-tree/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 5
+    },
+    {
+      "id": "c8b1af75-95e0-4ad7-8172-2e1da1f2813b",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Lowest Common Ancestor of a Binary Tree",
+      "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/",
+      "solution": "",
+      "isDone": false,
+      "order": 6
+    },
+    {
+      "id": "7c808669-0128-4a13-8494-94c432cba10a",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Kth Ancestor in a Tree",
+      "url": "https://www.geeksforgeeks.org/problems/kth-ancestor-in-a-tree/1",
+      "solution": "",
+      "isDone": false,
+      "order": 7
+    },
+    {
+      "id": "76fa9d45-ec54-4324-b245-ae5a67caaa49",
+      "subcategoryId": "85238efe-0a73-4415-bd4e-3019fea3f684",
+      "name": "Maximum Non-Adjacent Nodes Sum",
+      "url": "https://www.geeksforgeeks.org/problems/maximum-sum-of-non-adjacent-nodes/1",
+      "solution": "",
+      "isDone": false,
+      "order": 8
     }
   ]
 }
